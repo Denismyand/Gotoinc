@@ -1,0 +1,56 @@
+@use "../mixins/flex";
+@use "../variables/colors";
+@use "../base/typography";
+
+.product_customization_buttons {
+  @include flex.flex(row, 12px);
+  button {
+    cursor: pointer;
+  }
+  .add-to-cart-button {
+    @include flex.flex(row, 8px);
+    @include typography.body-large;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1;
+    background-color: colors.$accent-600;
+    color: colors.$primary-900;
+    border: 0;
+    border-radius: 8px;
+    height: 100%;
+    path {
+      fill: colors.$primary-800;
+    }
+    &:hover {
+      background-color: colors.$accent-200;
+    }
+  }
+  .like-button {
+    background-color: transparent;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid colors.$primary-800;
+    path {
+      fill: colors.$primary-800;
+    }
+    &:hover {
+      border: 1px solid colors.$secondary-600;
+      path {
+        fill: colors.$secondary-600;
+      }
+    }
+  }
+  .compare-button {
+    background-color: transparent;
+    padding: 10px;
+    border: 0;
+    path {
+      fill: colors.$primary-800;
+    }
+    &:hover {
+      path {
+        fill: colors.$secondary-600;
+      }
+    }
+  }
+}

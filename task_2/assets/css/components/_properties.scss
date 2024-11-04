@@ -1,0 +1,112 @@
+@use "../mixins/flex";
+@use "../mixins/effects";
+@use "../variables/colors";
+@use "../base/typography";
+
+.product_customization_properties {
+  @include flex.flex(column, 16px);
+  .product_parameter {
+    @include typography.body-large;
+  }
+  .color-picker {
+    @include flex.flex(column, 12px);
+    .colour-options {
+      @include flex.flex(row, 12px);
+      figure {
+        flex-grow: 1;
+        padding: 12px;
+        border-radius: 12px;
+        img {
+          width: 100%;
+        }
+
+        &.disabled {
+          @include effects.tooltip;
+          background-color: rgba(colors.$primary-100, 0.125);
+          border: 1px solid rgba(colors.$neutral-200, 0.25);
+          img {
+            opacity: 0.25;
+          }
+        }
+        &:not(.disabled) {
+          cursor: pointer;
+        }
+        &:not(.disabled):not(.active) {
+          @include effects.scaleImgOnHover;
+          @include effects.hoverBgAndBorderChange(
+            rgba(colors.$neutral-100, 0.5),
+            1px solid colors.$neutral-100,
+            colors.$neutral-100,
+            1px solid colors.$neutral-300
+          );
+        }
+        &.active {
+          background-color: colors.$neutral-200;
+          border: 1.5px solid colors.$secondary-600;
+        }
+      }
+    }
+  }
+  .size-picker {
+    @include flex.flex(column, 8px);
+    .size-metric-systems {
+      @include flex.flex(row, 8px);
+      p {
+        cursor: pointer;
+        @include typography.body-medium;
+        &.selected {
+          font-weight: 600;
+          color: colors.$secondary-600;
+        }
+        &:not(.selected):hover {
+          color: colors.$secondary-600;
+        }
+      }
+    }
+    .size-options {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      row-gap: 12px;
+      column-gap: 10px;
+      p {
+        @include typography.body-large;
+        padding: 8px;
+        text-align: center;
+        border-radius: 8px;
+        &.active {
+          background-color: colors.$neutral-200;
+          border: 1.5px solid colors.$secondary-600;
+          color: #000;
+        }
+        &.disabled {
+          @include effects.tooltip;
+          background-color: rgba(colors.$primary-100, 0.125);
+          border: 1px solid rgba(colors.$primary-300, 0.5);
+          color: rgba(colors.$primary-300, 0.5);
+          text-decoration: line-through;
+        }
+        &:not(.disabled) {
+          cursor: pointer;
+        }
+        &:not(.disabled):not(.active) {
+          @include effects.hoverBgAndBorderChange(
+            transparent,
+            1px solid colors.$primary-800,
+            colors.$neutral-100,
+            1px solid colors.$primary-600
+          );
+        }
+      }
+    }
+    .size-guide {
+      @include typography.body-medium;
+      color: colors.$primary-500;
+      width: fit-content;
+      margin-left: auto;
+      cursor: pointer;
+      &:hover {
+        color: colors.$secondary-600;
+      }
+    }
+  }
+}

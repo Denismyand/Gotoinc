@@ -1,0 +1,23 @@
+@use "../mixins/flex";
+@use "../base/typography";
+
+.product_customization_title {
+  @include flex.flex(column, var(--spacing-sm));
+  .product_name {
+    @include typography.headline-large;
+  }
+  .product_price {
+    @include typography.headline-small;
+  }
+}
+
+@media (max-width: 768px) {
+  .product_customization_title {
+    .product_name {
+      @include typography.headline-medium;
+    }
+    .product_price {
+      @include typography.title-large;
+    }
+  }
+}

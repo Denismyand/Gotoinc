@@ -1,0 +1,63 @@
+@use "../mixins/flex";
+@use "../variables/colors";
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+
+* {
+  font-family: "Inter";
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a {
+  color: inherit;
+}
+body {
+  @include flex.flex;
+  min-height: 100dvh;
+  justify-content: center;
+  color: colors.$primary-800;
+}
+
+.page {
+  max-width: 1292px;
+  @include flex.flex(column, 24px);
+}
+
+.product {
+  @include flex.flex(column, var(--spacing-xl));
+  &_showcase {
+    @include flex.flex(var(--ccr), var(--spacing-xl));
+  }
+
+  &_customization {
+    @include flex.flex(column, var(--spacing-lg));
+    flex-grow: 1;
+  }
+}
+
+@media (max-width: 768px) {
+  body {
+    padding: 0 16px 16px;
+    --ccr: column; //ccr stands for column-column-row (mobile-tablet-desktop)
+  }
+  .page {
+    @include flex.flex(column, 0);
+  }
+
+  .like-button {
+    display: none;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1439px) {
+  body {
+    padding: 32px;
+    --ccr: column;
+  }
+}
+@media (min-width: 1440px) {
+  body {
+    padding: 74px;
+    --ccr: row;
+  }
+}

@@ -1,0 +1,81 @@
+@use "../mixins/flex";
+@use "../mixins/effects";
+@use "../variables/colors";
+
+.product_appearance {
+  @include flex.flex(column, var(--spacing-sm));
+
+  .main-image {
+    @include effects.hoverBgAndBorderChange(
+      rgba(colors.$neutral-100, 0.5),
+      1px solid colors.$neutral-100,
+      colors.$neutral-200,
+      1px solid colors.$neutral-300
+    );
+    width: 100%;
+    padding: var(--spacing-md);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1 / 1;
+    border-radius: 12px;
+    img {
+      width: 100%;
+    }
+    .like-button-mobile {
+      display: none;
+    }
+  }
+}
+.product_preview_images {
+  @include flex.flex(row, var(--spacing-sm));
+  figure {
+    cursor: pointer;
+    flex-grow: 1;
+    padding: 12px var(--spacing-xs);
+    border-radius: 12px;
+    img {
+      width: 100%;
+    }
+    &.selected-preview-image {
+      background-color: colors.$neutral-200;
+      border: 1.5px solid colors.$secondary-600;
+    }
+    &:not(.selected-preview-image) {
+      @include effects.hoverBgAndBorderChange(
+        rgba(colors.$neutral-100, 0.5),
+        1px solid colors.$neutral-100,
+        colors.$neutral-200,
+        1px solid colors.$neutral-300
+      );
+      @include effects.scaleImgOnHover;
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .product_appearance {
+    .main-image {
+      position: relative;
+      .like-button-mobile {
+        display: block;
+        position: absolute;
+        top: 16px;
+        right: 16px;
+        background-color: transparent;
+        padding: 10px;
+        border-radius: 8px;
+        border: 1px solid colors.$primary-800;
+        path {
+          fill: colors.$primary-800;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1440px) {
+  .product_appearance {
+    width: 53%;
+  }
+}

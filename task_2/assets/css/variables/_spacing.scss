@@ -1,0 +1,27 @@
+@media (max-width: 768px) {
+  body {
+    --spacing-xs: 8px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 24px;
+  }
+}
+@media (min-width: 769px) and (max-width: 1439px) {
+  body {
+    --spacing-xs: 10px;
+    --spacing-sm: 12px;
+    --spacing-md: 20px;
+    --spacing-lg: 30px;
+    --spacing-xl: 36px;
+  }
+}
+@media (min-width: 1440px) {
+  body {
+    --spacing-xs: 12px;
+    --spacing-sm: 16px;
+    --spacing-md: 24px;
+    --spacing-lg: 36px;
+    --spacing-xl: 48px;
+  }
+}

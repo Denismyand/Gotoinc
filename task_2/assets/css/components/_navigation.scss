@@ -1,0 +1,19 @@
+@use "../mixins/flex";
+@use "../variables/colors";
+@use "../base/typography";
+
+.navigation {
+  @include flex.flex(row, 4px);
+  padding: 12px 0;
+  @include typography.body-medium;
+  color: colors.$primary-300;
+  a {
+    &:hover {
+      color: colors.$secondary-600;
+    }
+  }
+  &_active {
+    font-weight: 600;
+    color: colors.$secondary-600;
+  }
+}

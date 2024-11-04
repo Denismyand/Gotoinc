@@ -1,0 +1,36 @@
+@use "../mixins/flex";
+@use "../variables/colors";
+@use "../base/typography";
+
+.product_info {
+  background-color: colors.$neutral-100;
+  border-radius: 12px;
+  &_title {
+    @include flex.flex(row, 24px);
+    padding: 24px;
+    p {
+      @include typography.title-medium;
+      cursor: pointer;
+      &.selected {
+        font-weight: bold;
+        color: colors.$secondary-600;
+      }
+    }
+  }
+  .separator {
+    height: 1px;
+    background-color: colors.$neutral-400;
+  }
+  &_full-info {
+    @include typography.body-large;
+    padding: 24px;
+  }
+}
+
+@media (min-width: 1440px) {
+  .product_info {
+    &_full-info {
+      width: 65%;
+    }
+  }
+}
