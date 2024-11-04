@@ -1,6 +1,7 @@
 import type { Post } from "@/app/types";
 import { fetchSinglePost } from "@/app/utils/api/fetchSinglePost";
 import { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 
 interface IPostProps {
@@ -29,6 +30,11 @@ const Post = async ({ params }: IPostProps) => {
   return (
     <div className="flex flex-col gap-4">
       <h1 className="text-center text-2xl font-bold">{post.title}</h1>
+      <Link href="/" className="ml-auto w-fit">
+        <button className="px-4 py-2 bg-background border border-foreground rounded-lg transition-shadow duration-300 hover:shadow-md">
+          Back to all posts
+        </button>
+      </Link>
       <p>{post.body}</p>
     </div>
   );
